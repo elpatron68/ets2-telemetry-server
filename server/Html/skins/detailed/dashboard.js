@@ -60,13 +60,18 @@ Funbit.Ets.Telemetry.Dashboard.prototype.filter = function (data, utils) {
     data.cargo.damage = Math.round(data.cargo.damage * 100) + '%';
 	
     var nextRestStopTimeDate = new Date(data.game.nextRestStopTime);
+    // nextRestStopTimeDate = minutes_with_leading_zeros(nextRestStopTimeDate);
     var hours = nextRestStopTimeDate.getUTCHours();   
-    var minutes = nextRestStopTimeDate.getUTCMinutes();
+    var minutes = (nextRestStopTimeDate.getUTCMinutes() < 10 ? '0' : '') + nextRestStopTimeDate.getUTCMinutes();
+    // (dt.getMinutes() < 10 ? '0' : '') + dt.getMinutes()
     data.nextRestStopHhMm = hours + ':' + minutes;
-    data.nextRestStopHh = hours;
-    data.nextRestStopMm = minutes;
-    // data.nextRestStopHhMm = nextRestStopTimeDate;
-
+    
+    var JobRemainingTime = new Date(data.job.remainingTime);
+    // JobRemainingTime = minutes_with_leading_zeros(JobRemainingTime);
+    var hours = JobRemainingTime.getUTCHours();   
+    var minutes = (JobRemainingTime.getUTCMinutes() < 10 ? '0' : '') + JobRemainingTime.getUTCMinutes();
+    data.JobRemainingTimeHhMm = hours + ':' + minutes;
+    
 	var connectedTrailers = 0;
 	wearSumPercent = 0;
 	for (var i = 1; i <= data.game.maxTrailerCount; i++) {
@@ -88,4 +93,9 @@ Funbit.Ets.Telemetry.Dashboard.prototype.render = function (data, utils) {
 
     // we don't have anything custom to render in this skin,
     // but you may use jQuery here to update DOM or CSS
+}
+
+function minutes_with_leading_zeros(dt) 
+{ 
+    return (dt.getMinutes() < 10 ? '0' : '') + dt.getMinutes();
 }

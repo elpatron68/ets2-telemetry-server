@@ -258,14 +258,8 @@ body {
 .nextRestStopHhMm {
   color: #54afd9;
 }
-.nextRestStopHh {
+.JobRemainingTimeHhMm {
   color: #54afd9;
-}
-.nextRestStopMm {
-  color: #54afd9;
-}
-.job-remainingTime {
-  color: #54d9a8;
 }
 ._jobIncome {
   color: #5dd954;
@@ -286,7 +280,7 @@ body {
 ._cargoWearInfo,
 ._trailerDamageInfo,
 .job-remainingTime,
-._nextRestStopHhMm,
+.nextRestStopHhMm,
 ._jobIncome,
 ._jobSource,
 ._jobDestination {
@@ -304,7 +298,7 @@ body {
 .dashboard.game-connected.yes ._trailerDamageInfo,
 .dashboard.game-connected.yes .truck-odometer,
 .dashboard.game-connected.yes .truck-speedRounded,
-.dashboard.game-connected.yes ._nextRestStopHhMm,
+.dashboard.game-connected.yes .nextRestStopHhMm,
 .dashboard.game-connected.yes .truck-cruiseControlSpeedRounded:not([data-value="0"]) {
   visibility: visible;
 }
